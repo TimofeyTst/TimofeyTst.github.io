@@ -1,14 +1,10 @@
-import { StrictMode, lazy, Suspense, useState, useEffect, useRef, Component, type ReactNode, type ComponentType } from 'react'
+import { StrictMode, lazy, Suspense, useState, useEffect, useRef, type ReactNode, type ComponentType } from 'react'
 import { hydrateRoot, createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import App from './App.tsx'
 import GlobalNav from './GlobalNav.tsx'
-import { articleRegistry, getEsSlugs } from './articles/registry'
-
-const FloatingChat = lazy(() => import('./FloatingChat'))
-const MusicToggle = lazy(() => import('./MusicToggle'))
+import { articleRegistry } from './articles/registry'
 const OpsDashboard = lazy(() => import('./ops/OpsDashboard'))
 const PrivacyPolicy = lazy(() => import('./PrivacyPolicy'))
 const AboutPage = lazy(() => import('./AboutPage'))
@@ -19,11 +15,6 @@ for (const article of articleRegistry) {
   articleComponents[article.id] = lazy(article.component)
 }
 
-class ChatErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
-  state = { hasError: false }
-  static getDerivedStateFromError() { return { hasError: true } }
-  render() { return this.state.hasError ? null : this.props.children }
-}
 
 /** Reset scroll + fade-in on route change (no animation on initial load to match prerender) */
 function PageTransition({ children }: { children: ReactNode }) {
@@ -67,36 +58,6 @@ function PageTransition({ children }: { children: ReactNode }) {
   )
 }
 
-function GlobalChat() {
-  const { pathname } = useLocation()
-  const [hydrated, setHydrated] = useState(false)
-  useEffect(() => setHydrated(true), [])
-
-  if (!hydrated || pathname.startsWith('/ops')) return null
-
-  const esSlugs = getEsSlugs()
-  const lang = esSlugs.has(pathname) ? 'es' : 'en'
-
-  return (
-    <ChatErrorBoundary>
-      <Suspense fallback={null}>
-        <FloatingChat lang={lang} />
-      </Suspense>
-    </ChatErrorBoundary>
-  )
-}
-
-function GlobalMusic() {
-  const { pathname } = useLocation()
-  const [hydrated, setHydrated] = useState(false)
-  useEffect(() => setHydrated(true), [])
-  if (!hydrated || pathname.startsWith('/ops')) return null
-  return (
-    <Suspense fallback={null}>
-      <MusicToggle />
-    </Suspense>
-  )
-}
 
 function ConditionalNav() {
   const { pathname } = useLocation()
@@ -186,9 +147,6 @@ const app = (
           </Routes>
         </Suspense>
       </PageTransition>
-      <GlobalChat />
-      <GlobalMusic />
-      <Analytics />
     </BrowserRouter>
   </StrictMode>
 )
