@@ -553,25 +553,6 @@ export const articleRegistry: ArticleConfig[] = [
       relatedLink: 'https://dev.to/santifer/i-built-a-multi-agent-job-search-system-with-claude-code-631-evaluations-12-modes-2cd0',
     },
   },
-  {
-    id: 'santifer-irepair',
-    slugs: { es: 'santifer-irepair', en: 'santifer-irepair-founder' },
-    titles: { es: 'Santifer iRepair', en: 'Santifer iRepair' },
-    seo: {
-      es: {
-        title: 'Santifer iRepair Sevilla | Reparación de Móviles desde 2009',
-        description: 'La tienda de reparación de móviles fundada por Santiago en 2009 sigue abierta en Sevilla. 30.000+ reparaciones. Encuentra la tienda o conoce al fundador.',
-      },
-      en: {
-        title: 'Santifer iRepair Seville | Phone Repair since 2009',
-        description: 'The phone repair shop founded by Santiago in 2009 is still open in Seville, Spain. 30,000+ repairs. Find the shop or meet the founder.',
-      },
-    },
-    sectionLabels: { es: {}, en: {} },
-    type: 'bridge',
-    component: () => import('../SantiferIRepair.tsx'),
-    xDefaultSlug: 'santifer-irepair',
-  },
 ]
 
 // Derived maps for GlobalNav and routing
