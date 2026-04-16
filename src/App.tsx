@@ -104,52 +104,61 @@ function RotatingRole() {
 
 function Hero() {
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-6 max-w-4xl mx-auto pt-24 pb-16">
-      <div className="mb-8">
-        <img
-          src="/foto-avatar.jpg"
-          alt="Timofey Starzhevsky"
-          className="w-36 h-36 rounded-full object-cover border-2 border-primary/30"
-        />
+    <section className="min-h-[85vh] flex items-center px-6 max-w-4xl mx-auto pt-24 pb-16">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 w-full">
+        {/* Photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="shrink-0"
+        >
+          <img
+            src="/foto-avatar.jpg"
+            alt="Timofey Starzhevsky"
+            className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-2 border-primary/30"
+          />
+        </motion.div>
+
+        {/* Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+          className="text-center sm:text-left"
+        >
+          <p className="text-muted-foreground text-lg mb-2 font-medium tracking-wide">Hi, I'm</p>
+          <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-4 leading-tight">
+            Timofey<br />
+            <span className="text-primary">Starzhevsky</span>
+          </h1>
+
+          <div className="text-2xl sm:text-3xl font-display font-semibold text-muted-foreground mb-6 h-10 flex items-center justify-center sm:justify-start">
+            <RotatingRole />
+          </div>
+
+          <p className="text-muted-foreground max-w-xl text-base sm:text-lg leading-relaxed mb-8">
+            {t.summary.p1}
+          </p>
+
+          <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+            <a
+              href="#experience"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card border border-border text-foreground font-medium text-sm hover:border-primary/50 transition-colors"
+            >
+              <ChevronRight className="w-4 h-4" />
+              Go to Experience
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card border border-border text-foreground font-medium text-sm hover:border-primary/50 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              Go to Contact
+            </a>
+          </div>
+        </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <p className="text-muted-foreground text-lg mb-2 font-medium tracking-wide">Hi, I'm</p>
-        <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-4 leading-tight">
-          Timofey<br />
-          <span className="text-primary">Starzhevsky</span>
-        </h1>
-
-        <div className="text-2xl sm:text-3xl font-display font-semibold text-muted-foreground mb-6 h-10 flex items-center">
-          <RotatingRole />
-        </div>
-
-        <p className="text-muted-foreground max-w-xl text-base sm:text-lg leading-relaxed mb-8">
-          {t.summary.p1}
-        </p>
-
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="#experience"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
-          >
-            <ChevronRight className="w-4 h-4" />
-            View Experience
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card border border-border text-foreground font-medium text-sm hover:border-primary/50 transition-colors"
-          >
-            <Mail className="w-4 h-4" />
-            Contact
-          </a>
-        </div>
-
-      </motion.div>
     </section>
   )
 }
