@@ -105,14 +105,12 @@ function RotatingRole() {
 function Hero() {
   return (
     <section className="min-h-[85vh] flex flex-col justify-center px-6 max-w-4xl mx-auto pt-24 pb-16">
-      {/* Avatar placeholder — TODO: replace with real photo — public/foto-avatar.webp */}
       <div className="mb-8">
-        <div
-          className="w-24 h-24 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center"
-          aria-label="Timofey Starzhevsky"
-        >
-          <span className="text-2xl font-display font-bold text-primary select-none">TS</span>
-        </div>
+        <img
+          src="/foto-avatar.jpg"
+          alt="Timofey Starzhevsky"
+          className="w-24 h-24 rounded-full object-cover border-2 border-primary/30"
+        />
       </div>
 
       <motion.div
@@ -151,11 +149,6 @@ function Hero() {
           </a>
         </div>
 
-        {/* Location tag */}
-        <div className="mt-8 flex items-center gap-2 text-muted-foreground text-sm">
-          <Globe className="w-4 h-4" />
-          <span>{t.location}</span>
-        </div>
       </motion.div>
     </section>
   )

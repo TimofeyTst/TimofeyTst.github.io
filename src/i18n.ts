@@ -18,7 +18,7 @@ const enContent = {
   // YouTube: one podcast episode so far (not a full channel page)
   youtube: 'https://www.youtube.com/watch?v=kUEC01AX0CM&t=1s',
 
-  greetingRoles: ['Backend Engineer', 'Tech Lead', 'Distributed Systems Builder'] as string[],
+  greetingRoles: ['Software Engineer', 'Tech Lead', 'Backend Engineer'] as string[],
 
   summary: {
     title: 'About Me',
