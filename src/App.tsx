@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { Mail, ExternalLink, Github, Code, Database, Server, Globe, Layers, Users, ChevronRight, Terminal, Youtube, Send } from 'lucide-react'
+import { Mail, Github, Code, Database, Server, Globe, Layers, Users, ChevronRight, Terminal, Youtube, Send } from 'lucide-react'
 import { translations } from './i18n'
 
 const t = translations.en
@@ -109,7 +109,7 @@ function Hero() {
         <img
           src="/foto-avatar.jpg"
           alt="Timofey Starzhevsky"
-          className="w-24 h-24 rounded-full object-cover border-2 border-primary/30"
+          className="w-36 h-36 rounded-full object-cover border-2 border-primary/30"
         />
       </div>
 
@@ -292,57 +292,6 @@ function Skills() {
   )
 }
 
-// ─── Projects ─────────────────────────────────────────────────────────────────
-
-function Projects() {
-  return (
-    <Section id="projects">
-      <SectionTitle>Open Source</SectionTitle>
-      <div className="space-y-4">
-        {t.projects.items.map((project, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors"
-          >
-            <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-              <div className="flex items-center gap-3">
-                <h3 className="text-lg font-display font-semibold text-foreground">{project.title}</h3>
-                <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20">
-                  {project.badge}
-                </span>
-              </div>
-              <a
-                href={`https://${project.link}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                View
-              </a>
-            </div>
-            <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-0.5 bg-muted text-muted-foreground text-xs rounded-md"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </Section>
-  )
-}
-
 // ─── Education ────────────────────────────────────────────────────────────────
 
 function Education() {
@@ -405,15 +354,8 @@ function Contact() {
     {
       icon: <Youtube className="w-5 h-5" />,
       label: 'YouTube',
-      // One podcast episode so far — linking directly to the video
-      href: t.youtube,
-      display: 'Podcast episode',
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      label: 'Email',
-      href: `mailto:${t.email}`,
-      display: t.email,
+      href: 'https://www.youtube.com/@TimofeyStarzhevsky',
+      display: '@TimofeyStarzhevsky',
     },
   ]
 
@@ -481,7 +423,6 @@ export default function App() {
       <Metrics />
       <Experience />
       <Skills />
-      <Projects />
       <Education />
       <Contact />
       <Footer />

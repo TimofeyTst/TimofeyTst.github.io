@@ -15,8 +15,7 @@ const enContent = {
   linkedin: 'https://linkedin.com/in/timofeytst',
   github: 'https://github.com/TimofeyTst',
   telegram: 'https://t.me/timofey_tst',
-  // YouTube: one podcast episode so far (not a full channel page)
-  youtube: 'https://www.youtube.com/watch?v=kUEC01AX0CM&t=1s',
+  youtube: 'https://www.youtube.com/@TimofeyStarzhevsky',
 
   greetingRoles: ['Software Engineer', 'Tech Lead', 'Backend Engineer'] as string[],
 
